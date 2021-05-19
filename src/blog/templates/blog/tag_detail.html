@@ -2,12 +2,14 @@
 
 
 {% block title %}
-    Posts list
+    {{ tag }} - {{ block.super }}
 {% endblock %}
 	
 {% block content %}
-    <h1 class="mb-5">Posts:</h1>
-	{% for post in posts %}
+    <h1 class="mb-5">
+	    Post with "{{ tag|title }}" tag:
+	</h1>
+	{% for post in tag.posts.all %}
 	    {% include 'blog/includes/post_card_template.html' %}
-    {% endfor %}
+	{% endfor %}
 {% endblock %}
